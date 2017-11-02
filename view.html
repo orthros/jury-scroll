@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JuRY Scroll</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font: 13px Helvetica, Arial;
+        }
+
+        form {
+            background: #000;
+            padding: 3px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        img {
+            max-width: 50px;
+            max-height: 50px;
+            object-fit: contain;
+            display: inline-block;
+        }
+
+        p {
+            display: inline-block;
+        }
+
+        .scroll-left {
+            height: 50px;
+            overflow: hidden;
+            position: relative;
+            background: black;
+        }
+
+        .scroll-left-elem {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            line-height: 50px;
+            color: white;
+            font-size: x-large;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            text-align: center;
+            /* Starting position */
+            -moz-transform: translateX(100%);
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+            /* Apply animation to this element */
+            -moz-animation: scroll-left 10s linear infinite;
+            -webkit-animation: scroll-left 10s linear infinite;
+            animation: scroll-left 10s linear infinite;
+        }
+
+        div.delay {
+            animation: scroll-left 10s 5s linear infinite;
+        }
+        /* Move it (define the animation) */
+
+        @-moz-keyframes scroll-left {
+            0% {
+                -moz-transform: translateX(100%);
+            }
+            100% {
+                -moz-transform: translateX(-100%);
+            }
+        }
+
+        @-webkit-keyframes scroll-left {
+            0% {
+                -webkit-transform: translateX(100%);
+            }
+            100% {
+                -webkit-transform: translateX(-100%);
+            }
+        }
+
+        @keyframes scroll-left {
+            0% {
+                -moz-transform: translateX(100%);
+                /* Browser bug fix */
+                -webkit-transform: translateX(100%);
+                /* Browser bug fix */
+                transform: translateX(100%);
+            }
+            100% {
+                -moz-transform: translateX(-100%);
+                /* Browser bug fix */
+                -webkit-transform: translateX(-100%);
+                /* Browser bug fix */
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+<script>
+    $(function () {
+        var socket = io();
+        socket.on('chat message', function (msg) {
+            $('.scroll-text').text(msg);
+        });
+    });
+</script>
+
+<body>
+    <div class="scroll-left">
+        <div class='scroll-left-elem'>
+            <img src="/images/jury.jpeg" />
+            <p class='scroll-text'>
+                Still Gross but Kinda More Weird and Less Sexist I Guess?
+            </p>
+            <img src=" /images/jury.jpeg " />
+        </div>
+        <div class='scroll-left-elem delay'>
+            <img src="/images/jury.jpeg " />
+            <p class='scroll-text'>
+                Still Gross but Kinda More Weird and Less Sexist I Guess?
+            </p>
+            <img src="/images/jury.jpeg " />
+        </div>
+    </div>
+</body>
+
+</html>
