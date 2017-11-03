@@ -5,72 +5,24 @@
     <title>JuRY Scroll</title>
     <link rel="shortcut icon" href="/images/jury.jpeg" type='image/jpeg' />
     <link rel="icon" href="/images/jury.jpeg" type='image/jpeg' />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font: 13px Helvetica, Arial;
-        }
-
-        form {
-            background: #000;
-            padding: 3px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        form input {
-            border: 0;
-            padding: 10px;
-            width: 90%;
-            margin-right: .5%;
-        }
-
-        form button {
-            width: 9%;
-            background: rgb(130, 224, 255);
-            border: none;
-            padding: 10px;
-        }
-
-        img {
-            max-width: 50px;
-            max-height: 50px;
-            object-fit: contain;
-            display: inline-block;
-        }
-
-        p {
-            display: inline-block;
-        }
-
-        #messages {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        #messages li {
-            padding: 5px 10px;
-        }
-
-        #messages li:nth-child(odd) {
-            background: #eee;
-        }
-    </style>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
 </head>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 
 <script>
-    //At this point we get a Random number to add to the ticker update
-    var updateVal = 1;
+    //At this point we get a Randoms string to add to the ticker update
+    function uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+    const updateVal = uuidv4();
     $(function () {
         var socket = io();
         $('form').submit(function () {
@@ -80,15 +32,30 @@
             });
             return false;
         });
+        $("#partnerPage").text(window.location.href + "view/" + updateVal);
     });
+
 </script>
 
 <body>
-    <ul id="messages"> </ul>
-    <form action=" ">
-        <input id="m" autocomplete="off " />
-        <button> Send </button>
-    </form>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+            <img class="img-fluid" src="/images/jury.jpeg" />
+            <h1 class="display-3">JuRY Scroll!</h1>
+            <p class="lead">A Quick Way to make scroll tickers in your browser!</p>
+        </div>
+    </div>
+    <div class="container text-center">
+        <h1 class="lead">Enter what you want to update the ticker with</h1>
+        <form action=" ">
+            <input type='' class='form-control' placeholder='Politics Politics Politics' id="m" autocomplete="off " />
+            <button class="btn btn-primary"> Update </button>
+        </form>
+    </div>
+    <div class="container text-center">
+        <h1 class="lead">Paste this link in a new tab or OBS to have a Ticker Auto Update</h1>
+        <label id="partnerPage"></label>
+    </div>
 </body>
 
 </html>
