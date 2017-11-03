@@ -18,7 +18,8 @@
     //At this point we get a Randoms string to add to the ticker update
     function uuidv4() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            var r = Math.random() * 16 | 0,
+                v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
     }
@@ -34,7 +35,6 @@
         });
         $("#partnerPage").text(window.location.href + "view/" + updateVal);
     });
-
 </script>
 
 <body>
@@ -46,10 +46,9 @@
         </div>
     </div>
     <div class="container text-center">
-        <h1 class="lead">Enter what you want to update the ticker with</h1>
+        <h1 class="lead">Enter what you want to update the ticker with and hit 'Enter'</h1>
         <form action=" ">
-            <input id="m" class='form-control' type='' placeholder='Politics Politics Politics'  autocomplete="off " />
-            <button class="btn btn-primary"> Update </button>
+            <input id="m" class='form-control' type='' placeholder='Politics Politics Politics' autocomplete="off " />
         </form>
     </div>
     <div class="container text-center">
@@ -60,7 +59,9 @@
 <footer>
     <div class='container text-center'>
         <br></br>
-        <label>Made with <span style="color: #e25555;">&#9829;</span> for &lt;&gt;</label>            
+        <label>Made with
+            <span style="color: #e25555;">&#9829;</span> for &lt;&gt;</label>
     </div>
 </footer>
+
 </html>
