@@ -1,4 +1,14 @@
 {
+  "name": "jury-scroll",
+  "version": "0.0.1",
+  "description": "Scroll Aplication for JuRY",
+  "engines": {
+    "node": "6.11.3"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "express": "^4.16.2",
     "socket.io": "^2.0.4"
