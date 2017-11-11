@@ -37,7 +37,8 @@
             });
             return false;
         });
-        $("#partnerPage").text(window.location.protocol + "//" + window.location.host + "/view/" + updateVal);
+        $("#viewPage").text(window.location.protocol + "//" + window.location.host + "/view/" + updateVal);
+        $("#controlPage").text(window.location.protocol + "//" + window.location.host + "/control/" + updateVal);
     });
 </script>
 
@@ -58,7 +59,11 @@
     <br></br>
     <div class="container text-center">
         <h1 class="lead">Paste this link in a new tab or OBS to have a ticker auto update</h1>
-        <label id="partnerPage"></label>
+        <label id="viewPage"></label>
+    </div>
+    <div class="container text-center">
+        <h1 class="lead">Or paste this link in a new tab to control the ticker</h1>
+        <label id="controlPage"></label>
     </div>
 </body>
 <footer>
