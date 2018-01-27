@@ -29,13 +29,16 @@ io.on('connection', function (socket) {
 });
 
 app.get('/api/control/:id/:message', function (req, res) {
+    var responseString = '';
     if (req.params != undefined &&
         req.params.id != undefined &&
         req.params.message != undefined) {
         var id = req.params.id;
         var message = req.params.message;
         io.emit("ticker " + id, message);
+        responseString = message;
     }
+    res.status(200).send(responseString);
     res.end();
 });
 
